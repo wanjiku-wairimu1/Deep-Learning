@@ -1,0 +1,28 @@
+# Deep-Learning
+https://huggingface.co/docs/transformers/tasks/asr
+https://modcom.co.ke/audio/ (#Audio files for training the model)
+
+
+Index of /audio
+ 	Name	Last modified	Size	Description
+ 	Parent Directory	 	-	 
+ 	audio.zip	2022-12-22 19:25	481K	 
+ 	merry.mp3	2022-12-22 17:22	115K	 
+ 	taken.wav	2022-12-22 17:22	434K	 
+  
+  https://colab.research.google.com/drive/15UJ7I_arBppPe6FP5RG86f7H4zeP7Hq0?usp=sharing (#SpeechToTextNotebook)
+  #https://justpaste.it/d70t
+  tokenizer = Wav2Vec2Tokenizer.from_pretrained("facebook/wav2vec2-base-960h")
+model = Wav2Vec2ForCTC.from_pretrained("facebook/wav2vec2-base-960h")
+
+#https://justpaste.it/bgjki
+
+input_values = tokenizer(audio, return_tensors = "pt").input_values
+logits = model(input_values).logits
+prediction = torch.argmax(logits, dim = -1)
+transcription = tokenizer.batch_decode(prediction)
+print(transcription)
+ 
+https://colab.research.google.com/drive/1t_WETkl-2e_ofuk8JHuP4tvGZuEiUd8d?usp=sharing  (# SpeechToTextKeras)
+
+  
